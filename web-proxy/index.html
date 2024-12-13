@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nothing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #013220;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #container {
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #0f402a;
+            color: #fff;
+            font-size: 1em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            outline: none;
+        }
+        input[type="text"]:hover, input[type="text"]:focus {
+            transform: scale(1.05);
+            background-color: #16643d;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            animation: shadowPulse 1s infinite;
+        }
+        button {
+            padding: 12px 24px;
+            background-color: #00a859;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 16px;
+            font-size: 1em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        button:hover {
+            transform: scale(1.1);
+            background-color: #028c4b;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            animation: shadowPulse 1s infinite;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes shadowPulse {
+            0%, 100% {
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            }
+            50% {
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+            }
+        }
+        #proxyIframe {
+            width: 100%; /* Adjust width to 80% */
+            height: 60vh; /* Adjust height to 60% of viewport height */
+            margin-top: 30px;
+            border: none;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Nothing</h1>
+        <input id="urlInput" type="text" placeholder="https://example.com">
+        <button onclick="fetchProxy()">Go</button>
+        <iframe id="proxyIframe" style="display: none;"></iframe>
+    </div>
+
+    <script>
+        function fetchProxy() {
+            const url = document.getElementById('urlInput').value;
+            const iframe = document.getElementById('proxyIframe');
+            if (!url) {
+                alert('Please enter a valid URL.');
+                return;
+            }
+            iframe.src = `/proxy?url=${encodeURIComponent(url)}`;
+            iframe.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
