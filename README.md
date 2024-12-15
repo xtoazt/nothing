@@ -6,7 +6,7 @@ How to deploy:
 
 
 
- web-proxy && node server.js
+ cd web-proxy && node server.js
 
 
 
